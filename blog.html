@@ -5,27 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Blog</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Wait for the DOM to be fully loaded before executing this code
-            const photoItems = document.querySelectorAll('.photo-item');
-
-            // Function to set the grid row span based on image dimensions
-            function setGridRowSpan() {
-                photoItems.forEach(item => {
-                    const image = item.querySelector('.photo');
-                    const height = image.clientHeight;
-                    const rowSpan = Math.ceil(height / 20); // Adjust the divisor as needed
-
-                    item.style.gridRow: `span ${rowSpan}`;
-                });
-            }
-
-            // Call the function on page load and resize
-            setGridRowSpan();
-            window.addEventListener('resize', setGridRowSpan);
-        });
-    </script>
 </head>
 <body>
 
@@ -53,19 +32,24 @@
             Check out the latest additions to the photo blog!
         </marquee>
 
-        <!-- Photo grid layout -->
-        <div class="photo-grid">
-            <div class="photo-item">
-                <img class="photo" src="img1.jpg" alt="Photo 1">
-                <p>Little Krishna</p>
+        <!-- Image Gallery -->
+        <div class="gallery">
+            <div class="gallery-item">
+                <img class="gallery-thumbnail" src="thumbnail1.jpg" alt="Thumbnail 1" onclick="openModal('img1.jpg', 'Little Krishna')">
             </div>
             
-            <div class="photo-item">
-                <img class="photo" src="img2.jpg" alt="Photo 2">
-                <p>Little Hunk</p>
+            <div class="gallery-item">
+                <img class="gallery-thumbnail" src="thumbnail2.jpg" alt="Thumbnail 2" onclick="openModal('img2.jpg', 'HUNK')">
             </div>
 
-            <!-- Add more photo items as needed -->
+            <!-- Add more gallery items as needed -->
+        </div>
+
+        <!-- Modal for larger image view -->
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImage">
+            <div id="caption"></div>
         </div>
     </main>
 
@@ -75,5 +59,22 @@
         </div>
     </footer>
 
+    <script>
+        // JavaScript functions for the image gallery modal
+        function openModal(imagePath, caption) {
+            const modal = document.getElementById('myModal');
+            const modalImage = document.getElementById('modalImage');
+            const captionText = document.getElementById('caption');
+
+            modal.style.display = 'block';
+            modalImage.src = imagePath;
+            captionText.innerHTML = caption;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
