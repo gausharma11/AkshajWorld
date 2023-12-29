@@ -55,11 +55,21 @@ nav a {
     margin-top: 2em;
 }
 
-.photo {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    display: block;
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.photo-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
 }
 
 .footer {
