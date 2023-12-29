@@ -55,6 +55,34 @@ nav a {
     margin-top: 2em;
 }
 
+/* Add this style for the catalog */
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.catalog-item {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.catalog-item:hover {
+    transform: scale(1.05);
+}
+
+.catalog-item img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.catalog-item p {
+    margin-top: 0.5em;
+    text-align: center;
+}
+/* Add this style for the catalog */
+
 /* Add this style for the image gallery */
 .gallery {
     display: flex;
