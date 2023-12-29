@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Blog</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for the DOM to be fully loaded before executing this code
+            const photoItems = document.querySelectorAll('.photo-item');
+
+            // Function to set the grid row span based on image dimensions
+            function setGridRowSpan() {
+                photoItems.forEach(item => {
+                    const image = item.querySelector('.photo');
+                    const height = image.clientHeight;
+                    const rowSpan = Math.ceil(height / 20); // Adjust the divisor as needed
+
+                    item.style.gridRow: `span ${rowSpan}`;
+                });
+            }
+
+            // Call the function on page load and resize
+            setGridRowSpan();
+            window.addEventListener('resize', setGridRowSpan);
+        });
+    </script>
 </head>
 <body>
 
